@@ -1,0 +1,9 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Hobo Iot Backend",
+  "main": "app/index.js",
+  "repository": "https://github.com/kaiyisg/hobo-iot",
+  "author": "Kai Yi",
+  "license": "MIT"
+}
