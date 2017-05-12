@@ -4,8 +4,7 @@
   "description": "Hobo Iot Backend",
   "main": "app/index.js",
   "scripts": {
-    "dev": "./node_modules/.bin/gulp",
-    "lint": "./node_modules/.bin/gulp lint"
+    "dev": "./node_modules/.bin/gulp"
   },
   "repository": "https://github.com/kaiyisg/hobo-iot",
   "author": "Kai Yi Lee",
@@ -17,6 +16,9 @@
     "express-graphql": "^0.6.4",
     "graphql": "^0.9.6",
     "gulp": "^3.9.1",
-    "gulp-eslint": "^3.0.1"
+    "gulp-eslint": "^3.0.1",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-yarn": "^0.1.1",
+    "run-sequence": "^1.2.2"
   }
 }
