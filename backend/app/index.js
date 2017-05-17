@@ -2,34 +2,57 @@ const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const { buildSchema } = require('graphql');
 
+const fakeDatabase = {
+  1: {
+    switchedOn: false,
+  },
+};
+
 // schema states what types are expected to return from each part
 // Construct a schema, using GraphQL schema language
 const schema = buildSchema(`
+  input LightBulbSwitch {
+    switchedOn: Boolean!
+    person: String
+  }
   type LightBulb {
-    lightId: Int!
-    toggleSwitch(toggle: Boolean!, personId: String!): Boolean
+    id: ID!
+    switchedOn: Boolean!
   }
   type Query {
-    getLightById(lightId: Int!): LightBulb
+    getLightBulb(id: ID!): LightBulb!
+  }
+  type Mutation {
+    switchLightOn(id: ID!, input: LightBulbSwitch!): LightBulb!
   }
 `);
 
 // This class implements the LightBulb GraphQL type
+// any complex fields can be placed here
 class LightBulb {
-  constructor(lightId) {
-    this.lightId = lightId;
-  }
-  toggleSwitch({ personId, toggle }) {
-    console.log(`${this.lightId}'s switch has been toggled ${toggle} by ${personId}`);
-    return toggle;
+  constructor(id, { switchedOn }) {
+    this.id = id;
+    this.switchedOn = switchedOn;
   }
 }
 
 // The root provides a resolver for each endpoint, at the top level
 // Especially useful for queries
 const root = {
-  getLightById: function ({ lightId }) {
-    return new LightBulb(lightId);
+  getLightBulb: function ({ id }) {
+    if (!fakeDatabase[id]) {
+      throw new Error(`no lightbulb exists with id ${id}`);
+    }
+    console.log(fakeDatabase[id]);
+    return new LightBulb(id, fakeDatabase[id]);
+  },
+  switchLightOn: function ({ id, input }) {
+    if (!fakeDatabase[id]) {
+      throw new Error(`no lightbulb exists with id ${id}`);
+    }
+    fakeDatabase[id] = input;
+    console.log(fakeDatabase[id]);
+    return new LightBulb(id, input);
   },
 };
 

@@ -9,3 +9,19 @@ Requires node `>7.6.0`, Yarn
 To install dependencies:
 
 `yarn`
+
+## To do graphql queries
+Get (Query):
+{
+  getLightBulb(id:1) {
+    id
+    switchedOn
+  }
+}
+Post (Mutations):
+mutation {
+  switchLightOn(input: {switchedOn: true, person: "kai Yi"}, id: 1) {
+    id
+    switchedOn
+  }
+}
