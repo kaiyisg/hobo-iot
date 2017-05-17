@@ -7,8 +7,8 @@ const runSequence = require('run-sequence');
 gulp.task('lint', () => {
   gulp.src(['**/*.js', '!node_modules/**', '!static/**'])
     .pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(eslint.failAfterError());
+    .pipe(eslint.format());
+    // .pipe(eslint.failAfterError());
 });
 
 gulp.task('install', () => {

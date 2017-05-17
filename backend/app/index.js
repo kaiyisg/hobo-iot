@@ -2,13 +2,22 @@ const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const { buildSchema } = require('graphql');
 
+// schema states what types are expected to return from each part
 const schema = buildSchema(`
   type Query {
-    hello: String
+    toggleLightSwitch(lightName: String!, switchOn: Boolean!, personId: String!): Boolean
   }
 `);
 
-const root = { hello: () => 'Hello world!' };
+// The root provides a resolver for each endpoint
+const root = {
+  toggleLightSwitch: function ({ lightName, switchOn, personId }) {
+    lightName = 'hello';
+    switchOn = true;
+    personId = 'hello';
+    return true;
+  },
+};
 
 const app = express();
 app.use('/graphql', graphqlHTTP({
