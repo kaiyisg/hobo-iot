@@ -3,19 +3,33 @@ const graphqlHTTP = require('express-graphql');
 const { buildSchema } = require('graphql');
 
 // schema states what types are expected to return from each part
+// Construct a schema, using GraphQL schema language
 const schema = buildSchema(`
+  type LightBulb {
+    lightId: Int!
+    toggleSwitch(toggle: Boolean!, personId: String!): Boolean
+  }
   type Query {
-    toggleLightSwitch(lightName: String!, switchOn: Boolean!, personId: String!): Boolean
+    getLightById(lightId: Int!): LightBulb
   }
 `);
 
-// The root provides a resolver for each endpoint
+// This class implements the LightBulb GraphQL type
+class LightBulb {
+  constructor(lightId) {
+    this.lightId = lightId;
+  }
+  toggleSwitch({ personId, toggle }) {
+    console.log(`${this.lightId}'s switch has been toggled ${toggle} by ${personId}`);
+    return toggle;
+  }
+}
+
+// The root provides a resolver for each endpoint, at the top level
+// Especially useful for queries
 const root = {
-  toggleLightSwitch: function ({ lightName, switchOn, personId }) {
-    lightName = 'hello';
-    switchOn = true;
-    personId = 'hello';
-    return true;
+  getLightById: function ({ lightId }) {
+    return new LightBulb(lightId);
   },
 };
 
