@@ -1,6 +1,8 @@
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const { buildSchema } = require('graphql');
+// const { onLights, offLights } = require('./controllers/lights.js');
+const { onLights, offLights } = require('./controllers/lights.js');
 
 const fakeDatabase = {
   1: {
