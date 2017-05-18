@@ -356,7 +356,7 @@ binary-extensions@^1.0.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-1.8.0.tgz#48ec8d16df4377eae5fa5884682480af4d95c774"
 
-bindings@~1.2.1:
+bindings@*, bindings@~1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/bindings/-/bindings-1.2.1.tgz#14ad6113812d2d37d72e67b4cacb4bb726505f11"
 
@@ -2726,7 +2726,7 @@ mute-stream@0.0.5:
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.5.tgz#8fbfabb0a98a253d3184331f9e8deb7372fac6c0"
 
-nan@^2.3.0, nan@~2.5.1:
+nan@*, nan@^2.3.0, nan@~2.5.1:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.5.1.tgz#d5b01691253326a97a2bbee9e61c55d8d60351e2"
 
@@ -3364,6 +3364,13 @@ rpi-gpio@^0.8.1:
     async "1.x"
     debug "2.x"
     epoll "0.1.x"
+
+rpio@^0.9.16:
+  version "0.9.16"
+  resolved "https://registry.yarnpkg.com/rpio/-/rpio-0.9.16.tgz#dc4750db099c7e0e6e6505aa86297f4a23aaf5d6"
+  dependencies:
+    bindings "*"
+    nan "*"
 
 run-async@^0.1.0:
   version "0.1.0"

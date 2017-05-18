@@ -53,6 +53,11 @@ const root = {
       throw new Error(`no lightbulb exists with id ${id}`);
     }
     fakeDatabase[id] = input;
+    if (input.switchedOn) {
+      onLights();
+    } else {
+      offLights();
+    }
     console.log(fakeDatabase[id]);
     return new LightBulb(id, input);
   },

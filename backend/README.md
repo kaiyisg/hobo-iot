@@ -11,17 +11,23 @@ To install dependencies:
 `yarn`
 
 ## To do graphql queries
-Get (Query):
+### Get (Query):
 {
   getLightBulb(id:1) {
     id
     switchedOn
   }
 }
-Post (Mutations):
+
+### Post (Mutations):
 mutation {
   switchLightOn(input: {switchedOn: true, person: "kai Yi"}, id: 1) {
     id
     switchedOn
   }
 }
+
+To develop
+
+`sudo su`
+`yarn dev`
