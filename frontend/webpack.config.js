@@ -10,18 +10,11 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env']
+            presets: ['react']
           }
         }
       }
     ]
-    // loaders: [
-    //   {
-    //     test: /\.js$/,
-    //     loader: 'babel-loader',
-    //     query: {stage: 0}
-    //   }
-    // ]
   },
   output: {
     filename: 'index.bundle.js', 
